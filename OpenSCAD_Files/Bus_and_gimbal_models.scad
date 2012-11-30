@@ -115,7 +115,7 @@ gimbal_Yaw_Base_Height,
 offset_Z = - gimbal_Yaw_Base_Height);
 
 gimbal_Yaw_Isolation_Joint();
-//TODO: Change this offset to a more accessable variable that also takes the joint separation into account. I.E. Allows for spacer bearings.
+//TODO: Change this offset to a more accessible variable that also takes the joint separation into account. I.E. Allows for spacer bearings.
 camera_Top_Counterweight(
 gimbal_Yaw_Base_Diameter,
 gimbal_Yaw_Base_Height,
