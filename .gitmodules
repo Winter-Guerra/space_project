@@ -1,0 +1,3 @@
+[submodule "Ardupilot_Mega"]
+path = Ardupilot_Mega
+url = git@github.com:xtremd/ardupilot.git
