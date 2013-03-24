@@ -1,0 +1,104 @@
+== How to set up a full hardware-in-the-loop simulation with Xplane ==
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/Xplane.png
+
+It's easy to create a powerful "hardware in the loop" simulator with APM, with a Flight Simulator "fooling" APM with sensor and GPS data like it would experience in flight, and then APM flying the plane accordingly.
+
+The overall setup looks like this:
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/X-Plain-Sim.jpg
+
+=== Here's how to set it up: ===
+
+*1)* Start by [https://code.google.com/p/ardupilot-mega/wiki/Programming compiling the APM code]. You will need to change your APM_config.h file to the following:
+
+{{{
+#define ENABLE_HIL ENABLED
+#define GCS_PROTOCOL GCS_PROTOCOL_XPLANE
+#define GCS_PORT 0
+#define GPS_PROTOCOL GPS_PROTOCOL_IMU
+#define AIRSPEED_CRUISE 15 // or whatever works best for your Xplane selection
+#define AIRSPEED_SENSOR ENABLED
+}}}
+
+*2)* Ensure that you have [http://code.google.com/p/ardupilot-mega/wiki/CLI set up APM] as usual with the CLI, including setting up the desired flight modes, and [http://code.google.com/p/ardupilot-mega/wiki/Mission programmed a mission] with the Mission Planner. Also, remember that you should set the default altitude and loiter radius. 
+
+*3)* Purchase the [http://www.x-plane.com/index_desktop.html X-Plane flight simulator], which is just $29. You can download a demo that runs for 10 minutes.
+
+=== Connecting APM and X-Plane ===
+
+*4)* If you're using Windows, you'll need the [http://code.google.com/p/ardupilot-mega/downloads/detail?name=ArdupilotMegaPlanner.zip&can=2&q= Mission Planner utility], which will send the output from your !ArduPilot's serial port connection to the flight simulator. Instructions on using it are [http://code.google.com/p/ardupilot-mega/wiki/MPFlightsim here]. 
+
+<wiki:comment>
+If you're using a Mac, you can use a Perl-based solution (this also works on Windows, if you prefer Perl). Here's what you need:
+
+Here is the Perl file: [http://api.ning.com/files/xRNyASq2LjL3D2W7-D-4tvKSdm-2NifDygSAVsFxnngOUoIC4XkcPnGyPL-zeJJRNrWyuifxCVSQnyMVibddCBg-OzRzLOQ9/XPlane.pl X-Plane.pl]
+</wiki:comment>
+
+=== X-Plane Settings ===
+X-Plane communicates over a network interface to the Flight Planner. Because of this you can run X-Plane and the Flight Planner on different computers. This is helpful if X-Plane running on a slower computer. Frame rate is very impotent.
+ 
+*5)* Now set up Xplane to work with APM. These are the screen shots that show the necessary settings you need to set in the Settings Menu – Data Input and Output: (note the UDP Data Rate in the lower right corner.)
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/Xplane_menu.jpg
+
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/xplane1.PNG
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/xplane2.PNG
+
+You may also want to turn on the Frame Rate to display on the screen.
+
+=== Flight Planner Settings ===
+
+*6)* Now you're ready to run the simulation. Make the necessary changes to the APM configuration settings and upload the code (ensure that the slider switch is in the "fly" position, towards the GPS connector). Keep the USB/FTDI cable plugged in. Now run the Com (Mission Planner or Mac equivalent) utility, selecting the COM port your USB/FTDI is assigned to, 115200 baud as the speed, and the flight simulator you're using. 
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/missionplannercomms.png
+
+Once you've selected Connect, if APM is connected and Xplane is running, you should see the Mission Planner Sim screen fill with data:
+
+http://ardupilot-mega.googlecode.com/svn/ArduPilotMegaImages/xplane3.PNG
+
+*7)* Turn your transmitter on and check your link to your receiver. When you move the sticks you should see the APM outputs change on the Flight Planner Simulator window. 
+
+=== Flight Test ===
+
+Now fly the plane in the sim with your RC transmitter. If the controls are reversed, it's best to change them with the [http://code.google.com/p/ardupilot-mega/wiki/Reversing DIP Switches] rather than the check boxes in the Mission Planner. 
+
+Now, when you switch to Stabilize, Auto or RTL, the simulator's plane should do what your UAV would do under the same circumstances. 
+
+In general, the correct order to load and run everything is as follows:
+
+ # Reboot APM (Do you need to set PID and Radio settings?)
+ # Start Xplane
+ # With the RC transmitter on and throttle down, start the Mission Planner.
+ # Check the IP connections between X-Plane and the Mission Planner.
+ # Connect the Mission Planner to your APM by setting the serial port, baud rate and pressing connect. 
+ # Re/Load a plane in X-Plane (this resets the sim) You should see data in the Mission Planner.
+ # Press the "b" key to take off the brakes and advance the throttle to take off.
+
+=== Error messages and fixes ===
+
+1. Can't open serial port : The comport has not been selected or the comport is in use. Do you have a terminal open to the APM?
+
+2. Socket (IP) setup problem. Do you have this open already? : You have another program running that is using the IP Port and conflicting with the data communications between Xplanes and APM Planner.
+
+3. Xplane Data Problem - You need DATA IN/OUT 3, 18, 19, 20 : Please redo the setup and make sure all the boxes are ticked. You may need to restart X-Plane.
+
+4. Bad Gains!!! : One of the simulator gain numbers is invalid.
+
+5. NO SIM data : Ardupilot Mega Planner is not receiving any data from Xplane. Please check your Xplane settings.
+
+7. The radio has not control. I push the sticks and nothing happens? Are your PID setting zero? Go through the APM setup.
+
+6. Flight controls are way off. You need to push the sticks way over to fly the plane.  Check your Radio setup in the APM. Did you configure the Radio?
+
+=== Debug ===
+
+1. The on screen status details only update after a valid connection to the APM has been made.
+
+2. Open Terminal, and verify what you see. If the text is readable go to 2b, if it is not look at 2a
+
+2a. When you click Connect you should see the APM header printed in the text box. If you don't you may not have the correct Comport or Baudrate
+
+2b. Verify the setup by opening the Terminal in APM Planner and see what it prints out. it should start with the APM header and continually spit out AAA???? forever. If you don't see the AAA's then you need to check your APM_config.h to enable HIL, and make sure you're not in setup mode (slider switch in wrong position).

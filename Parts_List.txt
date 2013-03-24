@@ -1,0 +1,74 @@
+Parts list: Nov. 9th, 2012
+
+## PARTS TO BUY ##
+Electronics
+	Avionics
+		-Assembled APM 2.5 (ArduPilot Module) + Mediatek GPS Module + GPS Cable + XT60 Power Module + DF13 Cable ($179.99 + tax packaged) <http://store.diydrones.com/APM_2_5_Assembled_p/br-apmpwrkt.htm>
+	Dataloggers
+		Sony Cybershot Camera (Needs new memory stick duo) (Salvaged)
+		No-name Chinese camera (Shoots stills only) (Salvaged)
+		Temperature Sensor (I2C or 1 Wire preferable)
+		SD Card for APM Datalogger
+
+Control Surface Motors
+	-Micro Servos
+		2 already Salvaged
+		Rest can be salvaged from Liz Arum's Collection
+		Distribution breakdown:
+			1 or 2 for ailerons
+			2 for 'V' tail elevators
+			1 for mechanical cutaway system
+			Total: ~4 needed.
+
+Batteries (Rechargeable Li Poly)
+	-Turnigy Lithium Polymer Battery for Camera. Provides about~1.5 hour battery life per cell (estimated). ($3.61 + tax)   <http://www.hobbyking.com/hobbyking/store/__18558__Turnigy_2200mAh_1S_20C_Lipoly_Single_Cell_.html>
+	Battery Cables/Plugs
+		-XT60 Female Battery Plugs (5 plugs) ($2.44 + tax) <http://www.hobbyking.com/hobbyking/store/__18448__Female_XT60_connectors_5pcs_bag_GENUINE.html>
+		-XT60 Male Battery Plugs (5 plugs) ($2.44 + tax) <http://www.hobbyking.com/hobbyking/store/__10414__Male_XT60_connectors_5pcs_bag_GENUINE.html>
+
+-- Mechanical
+Balloon Materials:
+	Weather Balloon (Max weight: )
+	Nylon rope for connection to weather ballon
+	Helium gas tank
+Cutaway system
+	Plastic pinion and socket
+	Micro servo (see servo section above)
+Gimbal Parts:
+	Skate Bearings (ABEC 5 or better)
+	Plastic Ball
+	Lead counterweights (salvageable)
+Bus Parts:
+	Foam Blocks
+		Alternatively, the bus can be 3D printed. Might save weight and might be structurally stronger.
+
+## PARTS TO SALVAGE ##
+
+
+## PARTS TO FABRICATE
+
+
+## END ##
+
+-Foam Blocks
+
+
+### Parts to Organize ###
+
+-Cameras, (One Cybershot, one crappy one)
+-Memory sticks (4GB Memory Stick Duo)
+-Dedicated batteries for cameras (isolated from avionic batteries)
+- MicroArduino (new, from adafruit, or ATTINY), is dedicated control for cameras.
+	-Will also control the yaw drift compensation servo
+-Ardupilot ()
+-Dedicated avionics batteries
+-Backup radio
+
+-RTTY Radio (For Arduino) (Receiver)
+-Arduino radio antenna
+-Base Station radio
+-Base Station Radio Antenna
+-Laptop to run radio analysis software
+-Radio analysis software (for Mac), must be able to support RTTY
+
+## HAM RADIO LICENSE ##

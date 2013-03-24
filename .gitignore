@@ -1,0 +1,4 @@
+######### GIT IGNORE #############
+
+# Ignore compiled programs
+Groundstation/*

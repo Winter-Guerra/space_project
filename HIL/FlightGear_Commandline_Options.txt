@@ -1,0 +1,1 @@
+--generic=socket,out,50,127.0.0.1,49005,udp,ardupilot --generic=socket,in,50,127.0.0.1,49000,tcp,ardupilot --in-air --altitude=1000 --vc=90 --heading=300 --timeofday=noon

@@ -76,7 +76,7 @@ gimbal_Roll_Isolation_Axle_Length = gimbal_Pitch_Ring_Inner_Diameter;
 //Yaw Base Diameter (diagonal footprint + padding)
 gimbal_Yaw_Base_Diameter = tolerance_Gimbal_Yaw_Base_Padding + sqrt( pow(camera_Width, 2) + pow(camera_Depth, 2));
 //Yaw Base Height (thickness)
-gimbal_Yaw_Base_Height = gimbal_Ring_Height;
+gimbal_Yaw_Base_Height = gimbal_Ring_Height/2;
 
 //## DUMMY CAMERA ##//
 //Z Offset

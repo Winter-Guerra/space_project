@@ -1,0 +1,4 @@
+Airfoil Design Useful References:
+
+Airfoil Reference Website (Complete with Reynolds number calculators and plot generators):
+http://airfoiltools.com/
