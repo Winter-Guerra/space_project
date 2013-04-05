@@ -11,6 +11,8 @@
 ##########################################################################################
 
 # Get Blender functions and object data
+import sys
+import os
 import bpy
 
 # This next line makes the handler triggers persistent across file reloads.
@@ -19,36 +21,47 @@ import bpy
 
 
 # Import other modular generator scripts
-# Script for cutting out the aileron slots
-# import aileron_Diff_Alignment_Background_Script.py
+#filename = os.path.join(os.path.basename(bpy.data.filepath), "aileronDiff_Alignment_Script.py")
+from os.path.basename(bpy.data.filepath) import aileronDiffAlignmentOperator
+#exec(compile(open(filename).read(), filename, 'exec'))
+
+#from . import aileronDiff_Alignment_Script
 
 class background_Geometric_Generator_Script_Controller(bpy.types.PropertyGroup):
     # The bl_idname must be all lowercase!
     bl_idname = "background_scripts.aileron_diff_aligner"
     bl_label = "Aileron Diff Alignment Script"
+    
+    
+    class_Run_List = {aileronDiffAlignmentOperator}
 
-    def scene_update(context):
+    def scene_update(scene):
         if bpy.data.objects.is_updated:
-            print("Changes in scenery detected:")
-            for ob in bpy.data.objects:
-                if ob.is_updated:
-                    print("=>", ob.name)
+            print("Changes in scenery detected: Running scripts")
+            
+            for class_Name in background_Geometric_Generator_Script_Controller.class_Run_List:
+                class_Name.execute
         
-        print("Running background scripts: Aileron Diff Alignment Script")
+        #print("Running background scripts: Aileron Diff Alignment Script")
         
         # Find wing alignment vector
         
         # Align aileron template to vector
         
-            for i in range(0,2):
-                bpy.data.objects['Aileron_Boolean_Difference'].rotation_axis_angle[i] = 0
+         #   for i in range(0,2):
+         #      bpy.data.objects['Aileron_Boolean_Difference'].rotation_axis_angle[i] = 0
         
         return {'FINISHED'}
 
 def register():
-    bpy.utils.register_class(aileronDiffAlignmentOperator)
+    bpy.utils.register_class(background_Geometric_Generator_Script_Controller)
     #Register as a function that updates every time something has changed.
-    bpy.app.handlers.scene_update_post.append(aileronDiffAlignmentOperator.scene_update)
+    bpy.app.handlers.scene_update_post.append(background_Geometric_Generator_Script_Controller.scene_update)
+    
+def unregister():
+    bpy.app.handlers.scene_update_post.delete(background_Geometric_Generator_Script_Controller.scene_update)
+    bpy.utils.unregister_class(background_Geometric_Generator_Script_Controller)
+    
     
     
 

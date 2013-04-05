@@ -18,11 +18,13 @@ import bpy
 # Since this script is project-specific and not globally useful as an addon, this line is disabled in this instance.
 # from bpy.app.handlers import persistent
 
-# Note: In blender, self is usually named 'context'
+# Note: In blender, self is usually named 'scene'
 # TODO: Find out why passing 'self' does not work. Is it implied?
 
 
 # Import other needed function libraries
+
+# TODO: Import mathutils vector class
 
 
 class aileronDiffAlignmentOperator(bpy.types.PropertyGroup):
@@ -36,7 +38,7 @@ class aileronDiffAlignmentOperator(bpy.types.PropertyGroup):
     wing_Spline_Object_Name = 'Shape_Guide_Nurbs_Curve'
 
     
-    def execute(context):
+    def execute(scene):
         
         # This function is not supposed to be attached to the 'bpy.app.handlers.scene_update_post' handler, it has no way to check if the scene data has changed and therefore will needlessly consume much processing power.
         # Instead, this function will be called by the
@@ -48,33 +50,46 @@ class aileronDiffAlignmentOperator(bpy.types.PropertyGroup):
         aileron_Diff_Template_Object = bpy.data.objects[aileronDiffAlignmentOperator.aileron_Difference_Object_Name]
         
         # Find wing alignment vector
-        aileronDiffAlignmentOperator.find_Object_Mean_Vector(context, wing_Spline_Object)
+        vector = aileronDiffAlignmentOperator.find_Object_Mean_Vector(scene, wing_Spline_Object)
         
         # Align aileron template to vector
-        aileronDiffAlignmentOperator.set_Aileron_Difference_Template_Vector(context, aileron_Diff_Template_Object)
+        aileronDiffAlignmentOperator.set_Aileron_Difference_Template_Vector(scene, aileron_Diff_Template_Object, vector)
         
         print("Done.")
         
         return {'FINISHED'}
         
-    def find_Object_Mean_Vector(context, object):
+    def find_Object_Mean_Vector(scene, object):
         # Finds the average global vector of the airfoil's sweep given the airfoil's guiding object (of type curve)
         # Method: Uses the first and last control point of the guiding curve to find the average object vector. 
         # Assumes: The curve object has the "endpoint" property checked. (AKA: Is anchored to its endpoints.) 
-        return
+        
+        # TODO: Function still needs to be written 
+        
+        # TODO: Should return a vector (a mathutils object)
+        vector = 0
+        return vector
     
-    def set_Aileron_Difference_Template_Vector(context, aileron_Diff_Object):
+    def set_Aileron_Difference_Template_Vector(scene, aileron_Diff_Object, vector):
         for i in range(0,2):
             aileron_Diff_Object.rotation_axis_angle[i] = 0
             
         return
 
-def register():
-    bpy.utils.register_class(aileronDiffAlignmentOperator)
-    #Register as a function that updates every time something has changed.
- 
- # To be handled by update script   #bpy.app.handlers.scene_update_post.append(aileronDiffAlignmentOperator.execute)
-    
+# This should be handled by the controller -> background_Geometric_Generator_Script_Controller
+
+#
+#def register():
+#    bpy.utils.register_class(aileronDiffAlignmentOperator)
+#    #Register as a function that updates every time something has changed.
+#
+# # To be handled by update script   
+#    bpy.app.handlers.scene_update_post.append(aileronDiffAlignmentOperator.execute)
+#    
+#def unregister():
+#    bpy.app.handlers.scene_update_post.delete(aileronDiffAlignmentOperator.execute)
+#    bpy.utils.unregister_class(aileronDiffAlignmentOperator)
+#    
     
 
 if __name__ == "__main__":
