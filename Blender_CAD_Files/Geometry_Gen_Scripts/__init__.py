@@ -44,17 +44,6 @@ import bpy
 
 class aileronDiffAlignmentOperator(bpy.types.Operator):
 
-    #def __init__(self):
-    #    # The bl_idname must be all lowercase!
-    #    self.bl_idname = "background_scripts.aileron_diff_aligner"
-    #    self.bl_label = "Aileron Diff Alignment Script"
-    #
-
-    #   # Aileron boolean difference object name (Default: 'Aileron_Boolean_Difference')
-    #   # TODO: Should be made into a variable controllable through a setting panel, not just code.
-    #    self.aileron_Difference_Object_Name = 'Aileron_Boolean_Difference'
-    #    self.wing_Spline_Object_Name = 'Shape_Guide_Nurbs_Curve'
-
         # The bl_idname must be all lowercase!
     bl_idname = "background_scripts.aileron_diff_aligner"
     bl_label = "Aileron Diff Alignment Script"
@@ -68,8 +57,6 @@ class aileronDiffAlignmentOperator(bpy.types.Operator):
 
         # This function is not supposed to be attached to the 'bpy.app.handlers.scene_update_post' handler, it has no way to check if the scene data has changed and therefore will needlessly consume much processing power.
         # Instead, this function will be called by the
-
-        print("Running: background_scripts.aileron_diff_aligner")
 
         # Get the objects that we are going to be using
         # TODO: Change these to reference the object directly! (ATM they seem to be making new copies of the objects.)
@@ -92,21 +79,25 @@ class aileronDiffAlignmentOperator(bpy.types.Operator):
         # Finds the average global vector of the airfoil's sweep given the airfoil's guiding object (of type curve)
         # Method: Uses the first and last control point of the guiding curve to find the average object vector. 
         # Assumes: The curve object has the "endpoint" property checked. (AKA: Is anchored to its endpoints.) 
-
         # TODO: Function still needs to be written 
 
-        # TODO: Should return a vector (a mathutils object)
+        # NOTE: vector is [x,y,z]
         vector = [0,0,0]
         return vector
 
     def set_Aileron_Difference_Template_Vector(scene, object, vector):
         # Set object rotation mode to axis angle
-        
-        object.rotation_mode = 'AXIS_ANGLE'
-        
-        #D.objects['Aileron_Boolean_Difference'].rotation_mode = 'AXIS_ANGLE'
-        
+        # @Deprecated
+        # object.rotation_mode = 'AXIS_ANGLE'
+    
         for i in range(0,2):
+            # Set the axis bits for the rotation function (constraints)
+            axis = []
+            axis[i] = 1
+            
+                
+                
+            bpy.ops.transform.rotate(value=vector[i], axis=axis, constraint_axis=(True, False, False), constraint_orientation='GLOBAL', mirror=False, proportional='DISABLED', proportional_edit_falloff='SMOOTH', proportional_size=1, snap=False, snap_target='CLOSEST', snap_point=(0, 0, 0), snap_align=False, snap_normal=(0, 0, 0), release_confirm=True)
             object.rotation_axis_angle[i] = vector[i]
             # bpy.data.objects[object_Name].rotation_axis_angle[i] = vector[i]
             # bpy.data.objects[Aileron_Boolean_Difference].rotation_axis_angle[0,0,0] = vector[i]
@@ -114,14 +105,7 @@ class aileronDiffAlignmentOperator(bpy.types.Operator):
         
 
 class geometric_generator_script_controller(bpy.types.Operator):
-    
-    #def __init__(self):
-    #    # The bl_idname must be all lowercase!
-    #    self.bl_idname = "background_scripts.aileron_diff_aligner"
-    #    self.bl_label = "Aileron Diff Alignment Script"
     #
-    #
-    #    self.class_Run_List = [aileronDiffAlignmentOperator()]
         
 
     # The bl_idname must be all lowercase!
@@ -132,19 +116,19 @@ class geometric_generator_script_controller(bpy.types.Operator):
     #class_Run_List = [aileronDiffAlignmentOperator]
 
     def scene_update(scene):
-        if bpy.data.objects.is_updated:
-            print("Changes in scenery detected: Poking scripts")
-            
-            aileronDiffAlignmentOperator.execute(scene)
+        # To disable this script (say, for testing/demonstration purposes) Set the next line to "false"
+        run_Script = False
         
-        #print("Running background scripts: Aileron Diff Alignment Script")
+        if run_Script == True:
+            if bpy.data.objects.is_updated:
+                print("Changes in scenery detected: Poking scripts")
+                
+                # Backup the currently selected object (in case it is changed by later scripts)
+                
+                
+                print("Running: background_scripts.aileron_diff_aligner")
+                aileronDiffAlignmentOperator.execute(scene)
         
-        # Find wing alignment vector
-        
-        # Align aileron template to vector
-        
-         #   for i in range(0,2):
-         #      bpy.data.objects['Aileron_Boolean_Difference'].rotation_axis_angle[i] = 0
         
         return {'FINISHED'}
 
