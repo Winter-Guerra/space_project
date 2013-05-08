@@ -3,29 +3,42 @@ Parts list: Nov. 9th, 2012
 ## PARTS TO BUY ##
 Electronics
 	Avionics
-		-Assembled APM 2.5 (ArduPilot Module) + Mediatek GPS Module + GPS Cable + XT60 Power Module + DF13 Cable ($179.99 + tax packaged) <http://store.diydrones.com/APM_2_5_Assembled_p/br-apmpwrkt.htm>
+		-Assembled APM 2.5 (ArduPilot Module) + Mediatek GPS Module + GPS Cable + XT60 Power Module + DF13 Cable 
+			PRICE:$179.99 + tax
+			WEBSITE:<http://store.diydrones.com/APM_2_5_Assembled_p/br-apmpwrkt.htm> 
+			WEIGHT:~24grams
 	Dataloggers
 		Sony Cybershot Camera (Needs new memory stick duo) (Salvaged)
-		No-name Chinese camera (Shoots stills only) (Salvaged)
 		Temperature Sensor (I2C or 1 Wire preferable)
 		SD Card for APM Datalogger
 
 Control Surface Motors
-	-Micro Servos
-		2 already Salvaged
-		Rest can be salvaged from Liz Arum's Collection
-		Distribution breakdown:
-			1 or 2 for ailerons
-			2 for 'V' tail elevators
-			1 for mechanical cutaway system
-			Total: ~4 needed.
+	-Micro Servos ~9grams each
+		2 for elevons
+		Maybe 1 for mechanical cutaway system
+			Total: 3 needed
+			WEIGHT: ~9grams/each * 3 units
+				TOTAL: 27grams
+			WEBSITE: NA
+			PRICE: $0 (Salvaged) 
 
 Batteries (Rechargeable Li Poly)
-	-Turnigy Lithium Polymer Battery for Camera. Provides about~1.5 hour battery life per cell (estimated). ($3.61 + tax)   <http://www.hobbyking.com/hobbyking/store/__18558__Turnigy_2200mAh_1S_20C_Lipoly_Single_Cell_.html>
-	Battery Cables/Plugs
-		-XT60 Female Battery Plugs (5 plugs) ($2.44 + tax) <http://www.hobbyking.com/hobbyking/store/__18448__Female_XT60_connectors_5pcs_bag_GENUINE.html>
-		-XT60 Male Battery Plugs (5 plugs) ($2.44 + tax) <http://www.hobbyking.com/hobbyking/store/__10414__Male_XT60_connectors_5pcs_bag_GENUINE.html>
+	-Turnigy Lithium Polymer Battery for Camera. Provides ~1.5 hour camera battery life per cell (estimated).
+		PRICE: $3.61 + tax   
+		WEBSITE: <http://www.hobbyking.com/hobbyking/store/__18558__Turnigy_2200mAh_1S_20C_Lipoly_Single_Cell_.html>
+		WEIGHT: 
 
+Battery Cables/Plugs
+	-XT60 Female Battery Plugs (2 needed: 1 for camera, one for Motors/APM)
+	PRICE: $2.44 + tax per pack 
+	WEBSITE: <http://www.hobbyking.com/hobbyking/store/__18448__Female_XT60_connectors_5pcs_bag_GENUINE.html>
+	WEIGHT: 
+	
+	-XT60 Male Battery Plugs (2 needed: 1 for camera, one for Motors/APM) 
+	PRICE: $2.44 + tax per pack
+	WEBSITE: <http://www.hobbyking.com/hobbyking/store/__10414__Male_XT60_connectors_5pcs_bag_GENUINE.html>
+	WEIGHT: 
+	
 -- Mechanical
 Balloon Materials:
 	Weather Balloon (Max weight: )

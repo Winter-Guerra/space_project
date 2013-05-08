@@ -3,16 +3,16 @@
 // Copyleft CC BY-SA 3.0 Winter Guerra, 2012.
 // Github: github.com/xtremd
 
-//Import Bus and Gimbal libraries
-//May also use "use"
+// Import Bus and Gimbal libraries
+// May also use "use"
 include <gimbal_Functions.scad>;
 include <bus_Functions.scad>;
 
-//Adjust Rendering Settings
-//May have to set these individually instead
+// Adjust Rendering Settings
+// May have to set these individually instead
 $fn=100;
 
-//## BUS SIZE VARIABLES ##//
+// ## BUS SIZE VARIABLES ## //
 
 
 //## CAMERA SIZE VARIABLES ##//
@@ -83,9 +83,47 @@ gimbal_Yaw_Base_Height = gimbal_Ring_Height/2;
 camera_Offset_Z = -gimbal_Yaw_Base_Height-camera_Height/2;
 
 
-//#### GENERATOR FUNCTIONS ####//
+// ## WING SIZE/SWEEP VARIABLES ## //
 
-//### TEST ###//
+// Aircraft weight in grams. Is used to compute the needed wing area and wingspan
+aircraft_Weight = 3;
+
+// Maximum wing loading (grams/square mm)
+// REF BASE: recommended wing loading for a powered trainer is 15oz/sq.ft. (0.004577 grams/sq. mm.) For a glider, 10oz/sq.ft. (0.003052 grams/sq. mm) 
+// Taking the average, we get: 0.0038145 (grams/sq. mm). This is our max wing loading.
+wing_Max_Loading = 0.003052;
+
+// Target surface area of wing in mm^2
+wing_Surface_Area = aircraft_Weight/wing_Max_Loading;
+
+// Target wing sweep angle (degrees).
+wing_Sweep_Angle = 4;
+
+// Wing Target chord to wingspan ratio (Chord/Wingspan.) -> This will define how stable the pitching moment of the craft is.  
+wing_Chord_to_Wingspan_Ratio = 1/4;
+
+// Aerofoil Default Dimensions
+aerofoil_Default_Chord = 1; // in mm
+
+// Calculate the total localized wingspan of the aircraft. (I.E. Measuring the wing as a mirrored plank. No sweep.) -> This will be used for many later calculations
+// Maths:
+	// Surface Area (mm^2) = calculated chord (mm) * calculated wingspan(mm)
+	// calculated chord = ratio * calculated wingspan
+	// ratio * calculated wingspan^2 = surface area
+	// calculated wingspan^2 = SA/ratio
+	// calculated wingspan = sqrt(SA/ratio)
+aerofoil_Plank_Wingspan = sqrt(wing_Surface_Area / wing_Chord_to_Wingspan_Ratio);
+
+aerofoil_Target_Chord = aerofoil_Plank_Wingspan * wing_Chord_to_Wingspan_Ratio;
+// ## MAIN FUNCTION ##//
+
+module main(){
+rough_Blueprint_Bus();
+}
+
+// #### GENERATOR FUNCTIONS #### //
+
+// ### TEST ### //
 module rough_Blueprint_All() {
 //This will call the gimbal creator
 rough_Blueprint_Gimbal();
@@ -135,10 +173,18 @@ gimbal_Pitch_Isolation_Joint();
 
 }
 
-
-
 module rough_Blueprint_Bus() {
+	
+	make_Airfoil();
+	
+	// Make an invisible copy of the airfoil (for the left side of the plane)
+	%mirror([1,0,0])
+		make_Airfoil();
+	
+	// Debug stats
+	print_Bus_Stats();
 
 }
 
-rough_Blueprint_All();
+
+main();
