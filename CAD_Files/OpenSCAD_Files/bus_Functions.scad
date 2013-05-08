@@ -13,10 +13,19 @@ module make_Airfoil() {
 	//Orient the airfoil so that it is in quadrant 1
 	translate([0,0,-aerofoil_Plank_Wingspan/2])
 	
+	
+	extrude_With_Sweep();
+	
+	
+}
+
+module extrude_With_Sweep() {
+	
 	// Extrude the airfoil to 1/2 the wingspan (it will be mirrored later, possibly in Blender.) 
 	
 	// Use a for loop to create slices 
 	
+	// Placeholder. Does not extrude perpendicular to YZ plane.
 	linear_extrude(height = aerofoil_Plank_Wingspan/2, center = false){
 
 		
@@ -91,9 +100,7 @@ module make_Airfoil() {
 	}
 }
 
-module extrude_Airfoil_With_Sweep(){
 
-}
 
 module print_Bus_Stats() {
 	// Print out debugging information (measurements and such)

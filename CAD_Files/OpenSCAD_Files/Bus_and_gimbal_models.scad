@@ -86,7 +86,7 @@ camera_Offset_Z = -gimbal_Yaw_Base_Height-camera_Height/2;
 // ## WING SIZE/SWEEP VARIABLES ## //
 
 // Aircraft weight in grams. Is used to compute the needed wing area and wingspan
-aircraft_Weight = 3;
+aircraft_Weight = 300;
 
 // Maximum wing loading (grams/square mm)
 // REF BASE: recommended wing loading for a powered trainer is 15oz/sq.ft. (0.004577 grams/sq. mm.) For a glider, 10oz/sq.ft. (0.003052 grams/sq. mm) 
