@@ -5,3 +5,5 @@ Groundstation/*
 
 # Ignore compiled files
 *.pyc
+
+*.scad
