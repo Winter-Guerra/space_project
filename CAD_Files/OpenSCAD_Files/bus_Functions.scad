@@ -23,14 +23,18 @@ module extrude_With_Sweep() {
 	
 	// Extrude the airfoil to 1/2 the wingspan (it will be mirrored later, possibly in Blender.) 
 	
-	// Use a for loop to create slices 
+	// Use a for loop to create slices
+	slices = global_Wingspan / extrusion_Slices_Per_Mm;
+	//for (i = [0:slices]) {
+	//	
+	//}
 	
 	// Placeholder. Does not extrude perpendicular to YZ plane.
-	linear_extrude(height = aerofoil_Plank_Wingspan/2, center = false){
+	linear_extrude(height = aerofoil_Plank_Wingspan / 2, center = false){
 
 		
 	// Resize airfoil chord to target chord.
-	scale([aerofoil_Target_Chord, aerofoil_Target_Chord,1])
+	scale([aerofoil_Calculated_Chord, aerofoil_Calculated_Chord,1])
 	// Import the airfoil outline
 	polygon(points=[
 		[1.00000, 0.00000],
@@ -92,8 +96,7 @@ module extrude_With_Sweep() {
 		[0.94352, 0.00684],
 		[0.96809, 0.00461],
 		[0.98582, 0.00235],
-		[0.99646, 0.00065],
-		[1.00000, 0.00000]
+		[0.99646, 0.00065]
 		]);
 		
 	
@@ -111,7 +114,7 @@ module print_Bus_Stats() {
 	echo(wing_Surface_Area);
 	
 	echo("Calculated Chord:");
-	echo(aerofoil_Target_Chord);
+	echo(aerofoil_Calculated_Chord);
 	
 	echo("Calculated Plank Wingspan:");
 	echo(aerofoil_Plank_Wingspan);

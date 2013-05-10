@@ -114,7 +114,17 @@ aerofoil_Default_Chord = 1; // in mm
 	// calculated wingspan = sqrt(SA/ratio)
 aerofoil_Plank_Wingspan = sqrt(wing_Surface_Area / wing_Chord_to_Wingspan_Ratio);
 
-aerofoil_Target_Chord = aerofoil_Plank_Wingspan * wing_Chord_to_Wingspan_Ratio;
+aerofoil_Calculated_Chord = aerofoil_Plank_Wingspan * wing_Chord_to_Wingspan_Ratio;
+
+// Extrusion slices per mm (resolution)
+extrusion_Slices_Per_Mm = 1;
+
+// The global wingspan of the airfoil
+// Maths: I want the sin
+// sin = opp/hyp
+// hyp*sin = opp
+global_Wingspan = aerofoil_Plank_Wingspan * sin(wing_Sweep_Angle); 
+
 // ## MAIN FUNCTION ##//
 
 module main(){
