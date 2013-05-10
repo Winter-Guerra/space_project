@@ -70,7 +70,7 @@ def rough_Blueprint_Bus():
     airfoil_Mirror.mirror([1,0,0])
     airfoil_Mirror.color('red',0.2)
     
-    __bus = airfoil
+    __bus = airfoil + airfoil_Mirror
     # Debug stats
     bus.print_Bus_Stats()
 
