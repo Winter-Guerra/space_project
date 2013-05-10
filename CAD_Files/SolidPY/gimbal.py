@@ -1,11 +1,11 @@
-// Space project Gimbal creation OpenSCAD library.
-// See www.thewinterland.net for more info
-// Copyleft CC BY-SA 3.0 Winter Guerra, 2012.
-// Github: github.com/xtremd
+# Space project Gimbal creation OpenSCAD library.
+# See www.thewinterland.net for more info
+# Copyleft CC BY-SA 3.0 Winter Guerra, 2012.
+# Github: github.com/xtremd
 
-//## Translation Vars ##//
+### Translation Vars ###
 
-//Translated Wrapping Functions
+#Translated Wrapping Functions
 
 
 module camera_Placeholder(
@@ -19,16 +19,16 @@ offset_X=0,
 offset_Y=0,
 offset_Z=0) {
 
-//Allow for external position adjustments (to aid digital assembly)
+#Allow for external position adjustments (to aid digital assembly)
 translate([offset_X, offset_Y, offset_Z]) {
 
-//Make one object
+#Make one object
 union() {
 
-//Make fake camera body
+#Make fake camera body
 cube([camera_Width, camera_Depth, camera_Height], center=true);
 
-//Make lens
+#Make lens
 rotate ([90,0,0])
 translate([0,0,-(camera_Depth/2)-(camera_Lense_Depth/2)])
 cylinder(r1 = camera_Lense_Diameter_1, r2 = camera_Lense_Diameter_2, h = camera_Lense_Depth, center = true);
@@ -44,12 +44,12 @@ offset_X=0,
 offset_Y=0,
 offset_Z=0) {
 
-//Assembly Offset
+#Assembly Offset
 translate([offset_X, offset_Y, offset_Z]) {
 
-//Make one obj
+#Make one obj
 union() {
-
+	
 	cylinder(h=height, r=diameter/2, center=true);
 
 }
@@ -69,9 +69,9 @@ offset_Z=0) {
 
 translate([offset_X, offset_Y, offset_Z]) {
 
-//Make one obj
+#Make one obj
 union() {
-
+	
 	cylinder(h=height, r=diameter/2, center=true);
 
 }
@@ -84,7 +84,7 @@ offset_X=0,
 offset_Y=0,
 offset_Z=0) {
 
-//Center
+#Center
 translate([offset_X, offset_Y, offset_Z]) {
 
 rotate([90,0,0])
@@ -105,13 +105,13 @@ offset_X=0,
 offset_Y=0,
 offset_Z=0) {
 
-//Center Part
+#Center Part
 translate([offset_X, offset_Y, offset_Z]) {
 
 difference() {
-//Outer solid Ring
+#Outer solid Ring
 cylinder(r=ring_Diameter/2, h=ring_Height, center=true);
-//Inner difference ring
+#Inner difference ring
 cylinder(r=(ring_Diameter/2)-ring_Width, h=ring_Height+fudge, center = true);
 }
 }

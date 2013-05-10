@@ -2,3 +2,6 @@
 
 # Ignore compiled programs
 Groundstation/*
+
+# Ignore compiled files
+*.pyc
