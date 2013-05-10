@@ -62,6 +62,9 @@ def rough_Blueprint_Gimbal():
 
 def rough_Blueprint_Bus():
     
+    # Debug stats
+    bus.print_Bus_Stats()
+    
     airfoil = bus.make_Airfoil()
     
     # Make an invisible copy of the airfoil (for the left side of the plane)
@@ -71,8 +74,7 @@ def rough_Blueprint_Bus():
     airfoil_Mirror.color('red',0.2)
     
     __bus = airfoil + airfoil_Mirror
-    # Debug stats
-    bus.print_Bus_Stats()
+
 
     # TODO: Make it return!!
     return __bus

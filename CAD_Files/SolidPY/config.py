@@ -94,7 +94,10 @@ wing_Max_Loading = 0.003052
 wing_Surface_Area = aircraft_Weight/wing_Max_Loading
 
 # Target wing sweep angle (degrees).
-wing_Sweep_Angle = 4
+wing_Sweep = 4
+
+# Radians
+wing_Sweep_Angle = math.radians(wing_Sweep)
 
 # Wing Target chord to wingspan ratio (Chord/Wingspan.) -> This will define how stable the pitching moment of the craft is.
 wing_Chord_to_Wingspan_Ratio = 1/4
@@ -118,9 +121,10 @@ extrusion_Slice_Width = 2
 
 # The global wingspan of the airfoil
 # Maths: I want the math.sin
-# math.sin = opp/hyp
-# hyp*math.sin = opp
-global_Wingspan = aerofoil_Plank_Wingspan * -(math.sin(wing_Sweep_Angle))
+# hyp = local wingspan
+# local wingpspan = hyp * cos
+# wingspan/cos = hyp = global wingspan
+global_Wingspan = aerofoil_Plank_Wingspan / (math.cos(wing_Sweep_Angle))
 
 airfoil_Points = [
 		[1.00000, 0.00000],

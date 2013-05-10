@@ -16,10 +16,10 @@ def make_Airfoil():
 	
 	# Make the airfoil
 	airfoil = extrude_With_Sweep()
-	
+    
     # Cut the aileron holes
     
-    
+	
 	# Move the airfoil forward so that it is centered
 	
 	return airfoil
@@ -68,7 +68,7 @@ def extrude_With_Sweep():
                 airfoil_Solid = current_slice
             else:
                 airfoil_Solid = airfoil_Solid + current_slice
-                
+        
         
         
         # TODO: Fix this using a for loop. Does not extrude properly.
@@ -79,6 +79,9 @@ def extrude_With_Sweep():
 
 def print_Bus_Stats():
 	# Print out debugging information (measurements and such)
+	print("Wing Sweep Radians:")
+	print(config.wing_Sweep_Angle)
+	
 	print("Weight of Airplane")
 	print(config.aircraft_Weight)
 	
