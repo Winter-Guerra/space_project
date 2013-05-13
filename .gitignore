@@ -5,5 +5,9 @@ Groundstation/*
 
 # Ignore compiled files
 *.pyc
-
 *.scad
+
+
+# Ignore Useless Files
+*.pdf
+*.odt

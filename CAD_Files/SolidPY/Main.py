@@ -65,25 +65,24 @@ def rough_Blueprint_Bus():
     # Debug stats
     bus.print_Bus_Stats()
     
-    airfoil = bus.make_Airfoil()
+    airfoil_R = bus.make_Wing_Right()
     
-    # Make an invisible copy of the airfoil (for the left side of the plane)
-    airfoil_Mirror = airfoil.copy()
+    airfoil_L = bus.make_Wing_Left()
     
-    airfoil_Mirror.mirror([1,0,0])
-    airfoil_Mirror.color('red',0.2)
+    _bus = [airfoil_R, airfoil_L]
     
-    __bus = airfoil + airfoil_Mirror
-
+    # For debugging purposes.
+    #_bus = airfoil_R
 
     # TODO: Make it return!!
-    return __bus
+    return _bus
 
 
 def main():
     Assembly = rough_Blueprint_Bus()
     
-    writeSCADfile('Main.scad', Assembly)
+    # Make the file autorotate.
+    writeSCADfile('Main1.scad', Assembly)
 
 if __name__ == '__main__':
-	main()
+    main()
