@@ -82,7 +82,7 @@ def main():
     Assembly = rough_Blueprint_Bus()
     
     # Make the file autorotate.
-    writeSCADfile('Main1.scad', Assembly)
+    writeSCADfile('bin/Main.scad', Assembly)
 
 if __name__ == '__main__':
     main()
