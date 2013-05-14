@@ -62,24 +62,24 @@ def rough_Blueprint_Gimbal():
 
 def rough_Blueprint_Bus():
     
+    _bus = []
+    
     # Debug stats
     bus.print_Bus_Stats()
     
-    airfoil_R = bus.make_Wing_Right()
+    _bus.append( bus.make_Wing_Right() )
     
-    airfoil_L = bus.make_Wing_Left()
-    
-    _bus = [airfoil_R, airfoil_L]
-    
-    # For debugging purposes.
-    #_bus = airfoil_R
+    _bus.append( bus.make_Wing_Left() )
 
     # TODO: Make it return!!
     return _bus
 
 
 def main():
-    Assembly = rough_Blueprint_Bus()
+    
+    Assembly = []
+    
+    Assembly.extend( rough_Blueprint_Bus() )
     
     # Make the file autorotate.
     writeSCADfile('bin/Main.scad', Assembly)
