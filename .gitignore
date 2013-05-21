@@ -7,7 +7,11 @@ Groundstation/*
 *.pyc
 *.scad
 
-
-# Ignore Useless Files
+# Ignore Files That Don't Work Well in GIT
 *.pdf
 *.odt
+*.png
+.~lock*
+
+# Ignore files that will probably not be useful to anybody but me.
+Presentations/Poster_Session/src/
