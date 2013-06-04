@@ -1,0 +1,18 @@
+# Executive summary (2 Pages)
+
+// Why was this project done?
+
+// What technologies did this project hope to test?
+
+
+// Initial methods
+
+For the 3D model, initial efforts focused on developing a 3D model using the renowned program Solidworks. However, none of our design team knew how to use the program. Subsequently, efforts were diverted into developing in Blender, an open source 3D modeling program, however, due to technical constraints, this model was abandoned. THe current model was developed in SolidPY, a python wrapper program for OpenSCAD.
+
+// What new things did you have to try to move the project along?
+
+// What were the results of the project?
+
+// What did you prove?
+
+// What are the next steps of the project?
