@@ -12,6 +12,7 @@ Groundstation/*
 *.odt
 *.png
 .~lock*
+*.odp
 
 # Ignore files that will probably not be useful to anybody but me.
 Presentations/Poster_Session/src/
