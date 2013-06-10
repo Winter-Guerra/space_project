@@ -88,5 +88,5 @@ Next Steps:
 
 
 
-[Javlin_Photo]: photos/Design_1/Dorsal_View.jpeg
-[Flying_Wing_Render]: photos/Design_2/Blender/Render1.png
+[Javlin_Photo]: photos/Design_1/Notes/Dorsal_View.jpeg
+[Flying_Wing_Render]: photos/Design_2/3D_Design/Blender/Render1.png
