@@ -10,7 +10,6 @@ Groundstation/*
 # Ignore Files That Don't Work Well in GIT
 *.pdf
 *.odt
-*.png
 .~lock*
 *.odp
 
